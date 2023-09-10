@@ -10,21 +10,21 @@ const knex = require("knex")({
   },
 });
 
-// knex.schema
-//   .createTable("customers", function (table) {
-//     table.increments("id").primary();
-//     table.string("name");
-//     table.string("lastname");
-//   })
-//   .then(() => {
-//     console.log("table created");
-//   })
-//   .catch((err) => {
-//     console.error("problem: " + err);
-//   })
-//   .finally(() => {
-//     knex.destroy();
-//   });
+knex.schema
+  .createTable("customers", function (table) {
+    table.increments("id").primary();
+    table.string("name");
+    table.string("lastname");
+  })
+  .then(() => {
+    console.log("table created");
+  })
+  .catch((err) => {
+    console.error("problem: " + err);
+  })
+  .finally(() => {
+    knex.destroy();
+  });
 
 //in here , i added some values in table.
 const customers = [
@@ -44,34 +44,34 @@ knex("customers")
     knex.destroy();
   });
 
-// //in here, ı updated some data
-// const updateddata = {
-//   name: "ayşe",
-//   lastname: "yildiz",
-// };
-// knex("customers")
-//   .where({ id: 1 }) //the data ı want to change
-//   .update(updateddata)
-//   .then(() => {
-//     console.log("data has been updated.");
-//   })
-//   .catch((err) => {
-//     console.log("problem:" + err);
-//   })
-//   .finally(() => {
-//     knex.destroy();
-//   });
+//in here, ı updated some data
+const updateddata = {
+  name: "ayşe",
+  lastname: "yildiz",
+};
+knex("customers")
+  .where({ id: 1 }) //the data ı want to change
+  .update(updateddata)
+  .then(() => {
+    console.log("data has been updated.");
+  })
+  .catch((err) => {
+    console.log("problem:" + err);
+  })
+  .finally(() => {
+    knex.destroy();
+  });
 
 //in here, ı deleted some data
-// knex("customers")
-//   .where({ id: 5 })
-//   .delete()
-//   .then(() => {
-//     console.log("data has been deleted.");
-//   })
-//   .catch((err) => {
-//     console.log("problem:" + err);
-//   })
-//   .finally(() => {
-//     knex.destroy();
-//   });
+knex("customers")
+  .where({ id: 5 })
+  .delete()
+  .then(() => {
+    console.log("data has been deleted.");
+  })
+  .catch((err) => {
+    console.log("problem:" + err);
+  })
+  .finally(() => {
+    knex.destroy();
+  });
